@@ -21,7 +21,7 @@ public class CodebragPluginComponent implements ProjectComponent {
 
     @Override
     public void projectOpened() {
-        System.out.println("CodebragPluginIntegration constructor");
+
     }
 
     @Override

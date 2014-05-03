@@ -19,7 +19,7 @@ public class CodebragListeningServer {
         System.out.println("CodebragListeningServer constructor");
         try {
             HttpServer server = HttpServer.create(new InetSocketAddress(8880), 0);
-            server.createContext("/codebrag-intellij", new InternalHandler());
+            server.createContext("/codebrag-plugin", new InternalHandler());
             server.setExecutor(null); // creates a default executor
             server.start();
         } catch (Exception e) {
