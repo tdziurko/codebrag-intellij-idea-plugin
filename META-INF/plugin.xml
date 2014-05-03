@@ -1,17 +1,19 @@
 <idea-plugin version="2">
-  <id>com.yourcompany.unique.plugin.id</id>
-  <name>Plugin display name here</name>
-  <version>1.0</version>
-  <vendor email="support@yourcompany.com" url="http://softwaremill.com">SoftwareMill</vendor>
+  <id>pl.tomaszdziurko.codebrag.plugin.intellijidea</id>
+  <name>Codebrag Integration Plugin</name>
+  <version>0.1</version>
+  <vendor email="tomek.dziurko@softwaremill.com" url="http://softwaremill.com">SoftwareMill</vendor>
 
   <description><![CDATA[
-      Enter short description for your plugin here.<br>
-      <em>most HTML tags may be used</em>
+      Experimental plugin integrating <a href="http://codebrag.com">Codebrag</a> (code-review tool) with IntelliJ Idea
     ]]></description>
 
   <change-notes><![CDATA[
-      Add change notes here.<br>
-      <em>most HTML tags may be used</em>
+      <p>Version 0.1
+       <ul>
+        <li>Core feature: opening file in IDE from Codebrag web-app</li>
+       </ul>
+      </p>
     ]]>
   </change-notes>
 
