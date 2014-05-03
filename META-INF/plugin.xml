@@ -26,8 +26,8 @@
 
     <extensions defaultExtensionNs="com.intellij">
         <!-- Declare the application level service -->
-        <applicationService serviceInterface="com.codebrag.plugin.intellijidea.listener.CodebragListeningServer"
-                            serviceImplementation="com.codebrag.plugin.intellijidea.listener.CodebragListeningServer">
+        <applicationService serviceInterface="pl.tomaszdziurko.codebrag.plugin.intellijidea.listener.CodebragListeningServer"
+                            serviceImplementation="pl.tomaszdziurko.plugin.intellijidea.listener.CodebragListeningServer">
         </applicationService>
     </extensions>
 
