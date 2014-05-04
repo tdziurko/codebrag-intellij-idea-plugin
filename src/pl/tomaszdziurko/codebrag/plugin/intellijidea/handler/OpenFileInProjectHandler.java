@@ -1,6 +1,7 @@
 package pl.tomaszdziurko.codebrag.plugin.intellijidea.handler;
 
 import com.intellij.openapi.application.ApplicationManager;
+import com.intellij.openapi.diagnostic.Logger;
 import com.intellij.openapi.editor.actionSystem.EditorActionManager;
 import com.intellij.openapi.fileEditor.OpenFileDescriptor;
 import com.intellij.openapi.project.Project;
@@ -10,6 +11,8 @@ import com.intellij.psi.PsiManager;
 import com.intellij.psi.search.PsiShortNamesCache;
 
 public class OpenFileInProjectHandler {
+
+    private final Logger log = Logger.getInstance(OpenFileInProjectHandler.class);
 
     private Project project;
 
@@ -23,14 +26,16 @@ public class OpenFileInProjectHandler {
                     public void run() {
                         ApplicationManager.getApplication().runReadAction(new Runnable() {
                             public void run() {
-                                System.out.println("Handling file " + fileName);
                                 PsiFile[] foundFiles = PsiShortNamesCache.getInstance(project).getFilesByName(fileName);
                                 if (foundFiles.length == 0) {
-                                    System.out.println("No file with name " + fileName + " found");
+                                    log.info("No file with name " + fileName + " found");
                                     return;
                                 }
+                                if (foundFiles.length > 1) {
+                                    log.warn("Found more than one file with name " + fileName);
+                                }
                                 PsiFile foundFile = foundFiles[0];
-                                System.out.println("Found file " + foundFile.getName());
+                                log.info("Found file " + foundFile.getName());
                                 OpenFileDescriptor descriptor = new OpenFileDescriptor(project, foundFile.getVirtualFile());
                                 descriptor.navigate(true);
                             }

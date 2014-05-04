@@ -1,5 +1,6 @@
 package pl.tomaszdziurko.codebrag.plugin.intellijidea.listener;
 
+import com.intellij.openapi.diagnostic.Logger;
 import com.sun.net.httpserver.HttpExchange;
 import com.sun.net.httpserver.HttpHandler;
 import com.sun.net.httpserver.HttpServer;
@@ -13,17 +14,22 @@ import java.util.List;
 
 public class CodebragListeningServer {
 
+    private final Logger log = Logger.getInstance(CodebragListeningServer.class);
+
+    public static final int LISTENER_PORT = 8880;
+    public static final String LISTENER_CONTEXT_URL = "/codebrag-plugin";
+
     private List<OpenFileInProjectHandler> handlers = new ArrayList<OpenFileInProjectHandler>();
 
     public CodebragListeningServer() {
-        System.out.println("CodebragListeningServer constructor");
+        log.info("Starting listening server on http://localhost:" + LISTENER_PORT + LISTENER_CONTEXT_URL);
         try {
-            HttpServer server = HttpServer.create(new InetSocketAddress(8880), 0);
-            server.createContext("/codebrag-plugin", new InternalHandler());
+            HttpServer server = HttpServer.create(new InetSocketAddress(LISTENER_PORT), 0);
+            server.createContext(LISTENER_CONTEXT_URL, new InternalHandler());
             server.setExecutor(null); // creates a default executor
             server.start();
         } catch (Exception e) {
-            System.out.println("Exception " + e.getMessage());
+            log.error("Exception " + e.getMessage() + " cause: " + e.getCause());
         }
     }
 
