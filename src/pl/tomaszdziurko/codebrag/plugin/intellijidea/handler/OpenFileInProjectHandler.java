@@ -2,13 +2,16 @@ package pl.tomaszdziurko.codebrag.plugin.intellijidea.handler;
 
 import com.intellij.openapi.application.ApplicationManager;
 import com.intellij.openapi.diagnostic.Logger;
-import com.intellij.openapi.editor.actionSystem.EditorActionManager;
 import com.intellij.openapi.fileEditor.OpenFileDescriptor;
 import com.intellij.openapi.project.Project;
-import com.intellij.openapi.project.ProjectManager;
+import com.intellij.openapi.ui.MessageType;
+import com.intellij.openapi.ui.popup.Balloon;
+import com.intellij.openapi.ui.popup.JBPopupFactory;
+import com.intellij.openapi.wm.IdeFrame;
+import com.intellij.openapi.wm.WindowManager;
 import com.intellij.psi.PsiFile;
-import com.intellij.psi.PsiManager;
 import com.intellij.psi.search.PsiShortNamesCache;
+import com.intellij.ui.awt.RelativePoint;
 
 public class OpenFileInProjectHandler {
 
@@ -38,10 +41,21 @@ public class OpenFileInProjectHandler {
                                 log.info("Found file " + foundFile.getName());
                                 OpenFileDescriptor descriptor = new OpenFileDescriptor(project, foundFile.getVirtualFile());
                                 descriptor.navigate(true);
+                                showBalloonPopup("Codebrag<br/>File opened successfully.<br/>", MessageType.INFO);
                             }
                         });
                     }
                 }
         );
+    }
+
+    private void showBalloonPopup(String htmlText, MessageType messageType) {
+        IdeFrame ideFrame = WindowManager.getInstance().getIdeFrame(project);
+
+        JBPopupFactory.getInstance()
+                .createHtmlTextBalloonBuilder(htmlText, messageType, null)
+                .setFadeoutTime(7500)
+                .createBalloon()
+                .show(RelativePoint.getNorthEastOf(ideFrame.getComponent()), Balloon.Position.atRight);
     }
 }
