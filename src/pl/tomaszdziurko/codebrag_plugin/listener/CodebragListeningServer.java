@@ -1,10 +1,10 @@
-package pl.tomaszdziurko.codebrag.plugin.intellijidea.listener;
+package pl.tomaszdziurko.codebrag_plugin.listener;
 
 import com.intellij.openapi.diagnostic.Logger;
 import com.sun.net.httpserver.HttpExchange;
 import com.sun.net.httpserver.HttpHandler;
 import com.sun.net.httpserver.HttpServer;
-import pl.tomaszdziurko.codebrag.plugin.intellijidea.handler.OpenFileInProjectHandler;
+import pl.tomaszdziurko.codebrag_plugin.handler.OpenFileInProjectHandler;
 
 import java.io.IOException;
 import java.io.OutputStream;

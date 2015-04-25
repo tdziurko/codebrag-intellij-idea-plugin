@@ -1,12 +1,12 @@
-package pl.tomaszdziurko.codebrag.plugin.intellijidea;
+package pl.tomaszdziurko.codebrag_plugin;
 
 import com.intellij.openapi.components.ProjectComponent;
 import com.intellij.openapi.components.ServiceManager;
 import com.intellij.openapi.diagnostic.Logger;
 import com.intellij.openapi.project.Project;
 import org.jetbrains.annotations.NotNull;
-import pl.tomaszdziurko.codebrag.plugin.intellijidea.handler.OpenFileInProjectHandler;
-import pl.tomaszdziurko.codebrag.plugin.intellijidea.listener.CodebragListeningServer;
+import pl.tomaszdziurko.codebrag_plugin.handler.OpenFileInProjectHandler;
+import pl.tomaszdziurko.codebrag_plugin.listener.CodebragListeningServer;
 
 public class CodebragPluginComponent implements ProjectComponent {
 

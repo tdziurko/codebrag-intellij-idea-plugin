@@ -1,4 +1,4 @@
-package pl.tomaszdziurko.codebrag.plugin.intellijidea.handler;
+package pl.tomaszdziurko.codebrag_plugin.handler;
 
 import com.intellij.openapi.application.ApplicationManager;
 import com.intellij.openapi.diagnostic.Logger;
